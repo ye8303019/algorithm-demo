@@ -3,6 +3,7 @@ package com.chris.algorithm.demo.arraydemo;
 /**
  * Dynamic Array, implement the CRUD, Resize functions for an array
  * Created by ye830 on 10/15/2020.
+ * @author Chris Ye
  */
 public class Array<E> {
 
@@ -49,7 +50,7 @@ public class Array<E> {
             resize(2 * capacity);
         }
 
-        for (int i = size; i < index; i--) {
+        for (int i = size; i > index; i--) {
             array[i] = array[i - 1];
         }
         array[index] = value;
@@ -210,6 +211,12 @@ public class Array<E> {
 
         System.out.println(myArray.getSize());
 
-        System.out.println(myArray.toString());
+        System.out.println(myArray);
+
+        myArray.addLast(100);
+        System.out.println(myArray);
+
+        myArray.addFirst(-1);
+        System.out.println(myArray);
     }
 }
