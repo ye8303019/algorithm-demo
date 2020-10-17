@@ -3,6 +3,7 @@ package com.chris.algorithm.demo.arraydemo;
 /**
  * Dynamic Array, implement the CRUD, Resize functions for an array
  * Created by ye830 on 10/15/2020.
+ *
  * @author Chris Ye
  */
 public class Array<E> {
@@ -30,6 +31,31 @@ public class Array<E> {
 
     public Array() {
         this(10);
+    }
+
+
+    /**
+     * Return the array element by specific index
+     *
+     * @param index index of inserted value
+     * @return inserted value
+     * @throws IllegalArgumentException
+     */
+    public E get(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException();
+        }
+        return array[index];
+    }
+
+    /**
+     * Return the last element of the array
+     *
+     * @return inserted value
+     * @throws IllegalArgumentException
+     */
+    public E getLast() {
+        return array[size - 1];
     }
 
 
@@ -118,6 +144,15 @@ public class Array<E> {
         }
 
         return result;
+    }
+
+    /**
+     * Remove the last element of the array
+     *
+     * @return array value
+     */
+    public E removeLast() {
+        return remove(size - 1);
     }
 
     /**
