@@ -51,13 +51,22 @@ public class Array<E> {
     /**
      * Return the last element of the array
      *
-     * @return inserted value
+     * @return the element value
      * @throws IllegalArgumentException
      */
     public E getLast() {
         return array[size - 1];
     }
 
+    /**
+     * Return the first element of the array
+     *
+     * @return the element value
+     * @throws IllegalArgumentException
+     */
+    public E getFirst() {
+        return array[0];
+    }
 
     /**
      * Add the value into the array with specific index
@@ -153,6 +162,15 @@ public class Array<E> {
      */
     public E removeLast() {
         return remove(size - 1);
+    }
+
+    /**
+     * Remove the first element of the array
+     *
+     * @return array value
+     */
+    public E removeFirst() {
+        return remove(0);
     }
 
     /**
