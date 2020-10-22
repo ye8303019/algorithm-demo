@@ -36,6 +36,7 @@ public class ArrayQueue<E> implements Queue<E> {
      *
      * @return the capacity of the stack
      */
+    @Override
     public int getCapacity() {
         return array.getCapacity();
     }

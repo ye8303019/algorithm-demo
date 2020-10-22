@@ -10,5 +10,6 @@ public interface Queue<E> {
     E enqueue(E value);
     E dequeue();
     E getFront();
+    int getCapacity();
 
 }
