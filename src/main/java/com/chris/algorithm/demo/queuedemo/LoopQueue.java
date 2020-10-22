@@ -1,9 +1,10 @@
 package com.chris.algorithm.demo.queuedemo;
 
-import com.chris.algorithm.demo.arraydemo.Array;
 
 /**
  * Created by ye830 on 10/22/2020.
+ *
+ * @author Chris Ye
  */
 public class LoopQueue<E> implements Queue<E> {
     private int front, tail;
