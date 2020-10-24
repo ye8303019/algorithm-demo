@@ -1,11 +1,12 @@
-package com.chris.algorithm.demo.stackdemo;
+package com.chris.algorithm.demo.leetcode;
 
-import java.util.*;
+import java.util.Stack;
 
 /**
  * Created by ye830 on 10/17/2020.
  * <p>
  * Description:
+ * Leetcode 20
  * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
  * An input string is valid if:
  * 1 - Open brackets must be closed by the same type of brackets.
@@ -57,7 +58,7 @@ public class ValidParentheses {
 //    }
 
     private static boolean isValid(String s) {
-        java.util.Stack<Character> myStack = new java.util.Stack<>();
+        Stack<Character> myStack = new Stack<>();
         for (char myChar : s.toCharArray()) {
             if (myChar == '[' || myChar == '{' || myChar == '(') {
                 myStack.push(myChar);
