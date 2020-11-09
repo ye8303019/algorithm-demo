@@ -5,7 +5,7 @@ import com.chris.algorithm.demo.stackdemo.Stack;
 /**
  * Created by ye830 on 10/29/2020.
  */
-public class LinkedListStack<E> implements Stack<E>{
+public class LinkedListStack<E extends Comparable<E>> implements Stack<E>{
 
     private LinkedList<E> linkedList;
 
