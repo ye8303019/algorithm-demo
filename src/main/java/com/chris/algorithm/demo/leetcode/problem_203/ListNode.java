@@ -4,8 +4,8 @@ package com.chris.algorithm.demo.leetcode.problem_203;
  * Created by ye830 on 10/29/2020.
  */
 public class ListNode {
-    int val;
-    ListNode next;
+    public int val;
+    public ListNode next;
 
     ListNode() {
     }
