@@ -1,12 +1,13 @@
 package com.chris.algorithm.demo.helper;
 
 import com.chris.algorithm.demo.Sort.MergeSortTest;
+import com.chris.algorithm.demo.Sort.QuickSortTest;
 
 /**
  * Created by ye830 on 11/16/2020.
  */
 public class SortTimeHelper<E extends Comparable<E>> {
-    public static <E extends Comparable<E>> void sortTimeCost(E[] array, String type, Integer left, Integer right) {
+    public static <E extends Comparable<E>> void sortTimeCost(E[] array, String type, int left, int right) {
         Long startTime = System.nanoTime();
         if ("MergeSort".equalsIgnoreCase(type)) {
             new MergeSortTest().mergeSort(array, left, right);
@@ -25,6 +26,9 @@ public class SortTimeHelper<E extends Comparable<E>> {
         if ("MergeSortBU".equalsIgnoreCase(type)) {
             E[] array2 = array.clone();
             new MergeSortTest().mergeSortBU(array, left, right, array2);
+        }
+        if ("QuickSort".equalsIgnoreCase(type)) {
+            QuickSortTest.quickSort(array, left, right);
         }
         Long endTime = System.nanoTime();
         System.out.println(array.length + " Size Array " + type + " Time Cost:" + (endTime - startTime) / 1000000000.0);
