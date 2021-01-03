@@ -33,6 +33,42 @@ public class QuickSortTest<E extends Comparable<E>> {
         quickSort(array, position + 1, right);
     }
 
+    public static <E extends Comparable<E>> void quickSort3Ways(E[] array, int left, int right) {
+        Random rnd = new Random();
+        quickSort3Ways(array, left, right, rnd);
+    }
+
+
+    public static <E extends Comparable<E>> void quickSort3Ways(E[] array, int left, int right, Random rnd) {
+        if (left >= right) {
+            return;
+        }
+
+        int p = left + rnd.nextInt(right - left + 1);
+        SwapHelper.swap(array, p, left);
+
+        int lt = left, i = left + 1, gt = right + 1;
+
+        while (i < gt) {
+            if (array[i].compareTo(array[left]) < 0) {
+                lt++;
+                SwapHelper.swap(array, lt, i);
+                i++;
+            } else if (array[i].compareTo(array[left]) > 0) {
+                gt--;
+                SwapHelper.swap(array, gt, i);
+            } else {
+                i++;
+            }
+        }
+
+        SwapHelper.swap(array, left, lt);
+
+        quickSort3Ways(array, left, lt-1);
+        quickSort3Ways(array, gt, right);
+
+    }
+
     private static <E extends Comparable<E>> int partition(E[] array, int left, int right) {
         int j = left;
         for (int i = left + 1; i <= right; i++) {
@@ -136,5 +172,19 @@ public class QuickSortTest<E extends Comparable<E>> {
         array2 = array.clone();
         SortTimeHelper.sortTimeCost(array, "QuickSort", 0, array.length - 1);
         SortTimeHelper.sortTimeCost(array2, "QuickSort2Ways", 0, array.length - 1);
+
+        System.out.println("========== 3ways QuickSort Test ============");
+        array = new Integer[]{4, 2, 1, 4, 6, 5 ,4,8, 7, 3};
+        QuickSortTest.quickSort3Ways(array, 0, array.length - 1);
+        System.out.println(ArrayHelper.arrayToStr(array));
+        array = ArrayGenerator.generateRandomArray(size, size);
+        array2 = array.clone();
+        SortTimeHelper.sortTimeCost(array, "QuickSort2Ways", 0, array.length - 1);
+        SortTimeHelper.sortTimeCost(array2, "QuickSort3Ways", 0, array.length - 1);
+        array = ArrayGenerator.generateRandomArray(size, 1);
+        array2 = array.clone();
+        System.out.println("========== 3ways QuickSort Same Value Test ============");
+        SortTimeHelper.sortTimeCost(array, "QuickSort2Ways", 0, array.length - 1);
+        SortTimeHelper.sortTimeCost(array2, "QuickSort3Ways", 0, array.length - 1);
     }
 }

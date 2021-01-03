@@ -39,6 +39,9 @@ public class SortTimeHelper<E extends Comparable<E>> {
         if ("QuickSort2Ways".equalsIgnoreCase(type)) {
             QuickSortTest.quickSort2Ways(array, left, right);
         }
+        if ("QuickSort3Ways".equalsIgnoreCase(type)) {
+            QuickSortTest.quickSort3Ways(array, left, right);
+        }
         Long endTime = System.nanoTime();
         System.out.println(array.length + " Size Array " + type + " Time Cost:" + (endTime - startTime) / 1000000000.0);
     }
