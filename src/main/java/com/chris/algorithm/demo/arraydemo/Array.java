@@ -229,6 +229,12 @@ public class Array<E> {
         return size == 0;
     }
 
+    public void swap(int i, int j){
+        E temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

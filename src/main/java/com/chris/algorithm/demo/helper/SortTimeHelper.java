@@ -1,5 +1,6 @@
 package com.chris.algorithm.demo.helper;
 
+import com.chris.algorithm.demo.Sort.HeapSort;
 import com.chris.algorithm.demo.Sort.MergeSortTest;
 import com.chris.algorithm.demo.Sort.QuickSortTest;
 
@@ -41,6 +42,9 @@ public class SortTimeHelper<E extends Comparable<E>> {
         }
         if ("QuickSort3Ways".equalsIgnoreCase(type)) {
             QuickSortTest.quickSort3Ways(array, left, right);
+        }
+        if ("HeapSort".equalsIgnoreCase(type)) {
+            HeapSort.sort(array);
         }
         Long endTime = System.nanoTime();
         System.out.println(array.length + " Size Array " + type + " Time Cost:" + (endTime - startTime) / 1000000000.0);

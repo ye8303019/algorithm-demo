@@ -43,6 +43,64 @@ public class BST<E extends Comparable> {
         return node;
     }
 
+    public void addWithoutRecursive(E value) {
+        if (root == null) {
+            root = new Node(value);
+            size++;
+        }
+        Node pre = root;
+        while (pre != null) {
+            if (value.compareTo(pre.value) > 0) {
+                if (pre.right == null) {
+                    pre.right = new Node(value);
+                    size++;
+                    return;
+                }
+                pre = pre.right;
+            } else if (value.compareTo(pre.value) < 0) {
+                if (pre.left == null) {
+                    pre.left = new Node(value);
+                    size++;
+                    return;
+                }
+                pre = pre.left;
+            } else {
+                return;
+            }
+        }
+    }
+
+    public boolean contains(E value){
+        return contains(root, value);
+    }
+
+    private boolean contains(Node node, E value){
+        if(node == null){
+            return false;
+        }
+        if(value.compareTo(node.value) == 0){
+            return true;
+        } else if(value.compareTo(node.value)>0){
+            return contains(node.right, value);
+        } else {
+            return contains(node.left, value);
+        }
+    }
+
+    public void preOrder(){
+        preOrder(root);
+    }
+
+    private void preOrder(Node node){
+        if(node == null){
+            return;
+        }
+        System.out.println(node.value);
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+
+
     @Override
     public String toString() {
         return printNode(new StringBuilder(), root, 1).toString();
@@ -52,11 +110,11 @@ public class BST<E extends Comparable> {
         if (e == null) {
             return sb;
         }
-        for(int i = 0; i < level; i++){
+        for (int i = 0; i < level; i++) {
             sb.append("-");
         }
         sb.append(String.valueOf(e.value) + "\n");
-        level = level+1;
+        level = level + 1;
         if (e.left != null) {
             printNode(sb, e.left, level);
         }
@@ -67,6 +125,7 @@ public class BST<E extends Comparable> {
     }
 
     public static void main(String[] args) {
+        System.out.println("============== BST add test");
         BST bst = new BST();
         for (Integer i = 10; i > 0; i--) {
             bst.add(i);
@@ -74,5 +133,23 @@ public class BST<E extends Comparable> {
         bst.add(11);
         bst.add(9);
         System.out.println(bst);
+
+        System.out.println("============== BST add (Without Recursive) test");
+        BST bst2 = new BST();
+        for (Integer i = 10; i > 0; i--) {
+            bst2.addWithoutRecursive(i);
+        }
+        bst2.add(11);
+        bst2.add(9);
+        System.out.println(bst2);
+
+
+        System.out.println("============== BST contains test");
+        System.out.println(bst.contains(100));
+        System.out.println(bst2.contains(9));
+
+        System.out.println("============== BST pre-order test");
+        bst.preOrder();
+
     }
 }
