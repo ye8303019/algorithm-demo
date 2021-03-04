@@ -3,6 +3,7 @@ package com.chris.algorithm.demo.helper;
 import com.chris.algorithm.demo.Sort.HeapSort;
 import com.chris.algorithm.demo.Sort.MergeSortTest;
 import com.chris.algorithm.demo.Sort.QuickSortTest;
+import com.chris.algorithm.demo.Sort.ShellSort;
 
 /**
  * Created by ye830 on 11/16/2020.
@@ -45,6 +46,12 @@ public class SortTimeHelper<E extends Comparable<E>> {
         }
         if ("HeapSort".equalsIgnoreCase(type)) {
             HeapSort.sort(array);
+        }
+        if ("ShellSort".equalsIgnoreCase(type)) {
+            ShellSort.sort(array);
+        }
+        if ("ShellSort2".equalsIgnoreCase(type)) {
+            ShellSort.sort2(array);
         }
         Long endTime = System.nanoTime();
         System.out.println(array.length + " Size Array " + type + " Time Cost:" + (endTime - startTime) / 1000000000.0);
