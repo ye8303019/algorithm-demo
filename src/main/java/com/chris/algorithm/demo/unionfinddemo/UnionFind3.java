@@ -2,19 +2,24 @@ package com.chris.algorithm.demo.unionfinddemo;
 
 /**
  * First implementation for UnionFind by using array, but the value for each item is the parent item id, it's quite like a tree structure, but still using array for the implementation
+ * The different between {@link UnionFind2} and 3 is here for UnionFind3, just using point the short tree to the tall tree.
  * Created by ye830 on 5/9/2021.
  */
-public class UnionFind2 implements IUnionFind {
+public class UnionFind3 implements IUnionFind {
 
     /**
      * This is the array for storing the mapping between element order and it's sub-collection
      */
     private int[] parent;
 
-    public UnionFind2(int size) {
+    private int[] sz;
+
+    public UnionFind3(int size) {
         parent = new int[size];
+        sz = new int[size];
         for (int i = 0; i < parent.length; i++) {
             parent[i] = i;
+            sz[i] = 1;
         }
     }
 
@@ -70,6 +75,12 @@ public class UnionFind2 implements IUnionFind {
         if(rootP == rootQ){
             return;
         }
-        parent[rootP] = rootQ;
+        if(sz[rootP] < sz[rootQ]){
+            parent[rootP] = rootQ;
+            sz[rootQ] += sz[rootP];
+        } else {
+            parent[rootQ] = rootP;
+            sz[rootP] += sz[rootQ];
+        }
     }
 }
